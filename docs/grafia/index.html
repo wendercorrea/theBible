@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ajustes de grafia — Almeida 1911</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="bar">
+    <b>Almeida 1911 &rarr; atual</b>
+    <a href="#explicacao">Explicação</a>
+    <a href="#diff">Alterações</a>
+  </div>
+</header>
+<main>
+  <h1>Ajustes de grafia</h1>
+  <p class="lead">Almeida 1911 &rarr; português atual. Só ortografia; o sentido do texto não muda.
+  As alterações abaixo são calculadas no navegador a partir dos commits de <code>PorAlmeida1911.json</code> no GitHub.</p>
+
+  <h2 id="diff">Alterações entre commits</h2>
+  <p class="muted">Vale só para <code>PorAlmeida1911.json</code>: use os botões para andar commit a commit pelo histórico do arquivo, ou escolha dois commits quaisquer.</p>
+  <section class="card controls">
+    <label>Branch
+      <select id="branch"></select>
+    </label>
+    <label>De (antes)
+      <select id="base"></select>
+    </label>
+    <label>Para (depois)
+      <select id="target"></select>
+    </label>
+    <button id="go" type="button">Comparar</button>
+    <button id="orig" type="button" title="Primeiro commit do arquivo contra o mais novo">Original &rarr; atual</button>
+    <details class="local">
+      <summary>Comparar dois arquivos locais</summary>
+      <label>Antes <input type="file" id="fileA" accept=".json,application/json"></label>
+      <label>Depois <input type="file" id="fileB" accept=".json,application/json"></label>
+      <button id="goLocal" type="button">Comparar arquivos</button>
+    </details>
+    <div class="stepper">
+      <button id="newer" type="button" title="Commit mais novo">&laquo; Mais novo</button>
+      <span id="stepInfo" class="muted">—</span>
+      <button id="older" type="button" title="Commit mais antigo">Mais antigo &raquo;</button>
+    </div>
+    <p id="status" class="muted">Carregando commits…</p>
+  </section>
+
+  <section id="result" hidden>
+    <div class="stats">
+      <span class="pill" id="countVerses"></span>
+      <span class="pill" id="countWords"></span>
+      <span class="pill" id="countRange"></span>
+    </div>
+    <div class="filters">
+      <select id="book"><option value="">Todos os livros</option></select>
+      <input id="q" type="search" placeholder="Filtrar por palavra (antes ou depois)…">
+    </div>
+    <details class="card" id="topBox">
+      <summary>Palavras mais trocadas</summary>
+      <table id="top"></table>
+    </details>
+    <div id="list"></div>
+    <button id="more" type="button" hidden>Mostrar mais</button>
+  </section>
+
+  <h2 id="explicacao">O que mudou e por quê</h2>
+  <section class="card grp"><h3>1. Contrações com apóstrofo</h3>
+    <p>Em 1911 a junção de preposição (em/de) com pronome ou demonstrativo levava apóstrofo. Hoje se escreve junto. Antes de nome próprio, <code>d'Ephraim</code> virou <code>de Efraim</code>.</p>
+    <p><code>n'elle → nele</code> · <code>d'aquelle → daquele</code> · <code>n'isto → nisto</code></p></section>
+  <section class="card grp"><h3>2. Consoantes dobradas</h3>
+    <p>A grafia etimológica mantinha as consoantes duplas do latim (ll, cc, ff, pp, mm, nn, tt, gg). A reforma simplificou todas.</p>
+    <p><code>elle → ele</code> · <code>fallou → falou</code> · <code>bocca → boca</code> · <code>peccado → pecado</code></p></section>
+  <section class="card grp"><h3>3. Letras etimológicas</h3>
+    <p>ph, th, y e ch vinham do grego e do latim e foram trocados por f, t, i e c. Nomes próprios seguem a grafia das edições atuais.</p>
+    <p><code>propheta → profeta</code> · <code>Egypto → Egito</code> · <code>Christo → Cristo</code> · <code>Moysés → Moisés</code></p></section>
+  <section class="card grp"><h3>4. Grupos consonantais</h3>
+    <p>ct, pt e sc mudos deixaram de ser escritos; a pronúncia já não os tinha.</p>
+    <p><code>sancto → santo</code> · <code>fructo → fruto</code> · <code>escripto → escrito</code> · <code>sciencia → ciência</code></p></section>
+  <section class="card grp"><h3>5. Acentuação</h3>
+    <p>O acento grave marca a crase. O circunflexo de fôr, dôr, vêr foi retirado, e faltavam acentos hoje obrigatórios.</p>
+    <p><code>á → à</code> · <code>fôr → for</code> · <code>tambem → também</code> · <code>tres → três</code> · <code>ha → há</code></p></section>
+  <section class="card grp"><h3>6. Terminações</h3>
+    <p>-ae/-aes viraram -ai/-ais, veiu virou veio e os gentílicos em -eo viraram -eu.</p>
+    <p><code>pae → pai</code> · <code>vae → vai</code> · <code>quaes → quais</code> · <code>veiu → veio</code> · <code>judeos → judeus</code></p></section>
+  <section class="card grp"><h3>7. Prefixo com-</h3>
+    <p>Antes de n, m, t e outras consoantes, a ortografia atual usa con-/co-/en- conforme a pronúncia.</p>
+    <p><code>comnosco → conosco</code> · <code>commigo → comigo</code> · <code>emquanto → enquanto</code></p></section>
+  <section class="card grp"><h3>8. Casos isolados</h3>
+    <p>Troca de z por s em pôr e querer, e de ea por ia em criança.</p>
+    <p><code>poz → pôs</code> · <code>pozeram → puseram</code> · <code>quiz → quis</code> · <code>creança → criança</code></p></section>
+  <h2>Não alterado</h2>
+  <div class="card"><p>Contrações não listadas (d'um, d'entre, d'oiro, n'o…), outras palavras com ph/th/ct/pt (baptizar, victoria, tecto), acentos novos em palavras como possivel e supplica, e pronomes com hífen (pôl-os, encontral-o).</p></div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
